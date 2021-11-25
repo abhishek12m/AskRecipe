@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="icon" type="image/x-icon" href="/images/icons8-food-48.png">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .table td,
+    .table th {
+      border-top: 0px solid black;
+    }
+
+    html,
+    body {
+      font-family: "Raleway", sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      background-color: white;
+      color: #333;
+    }
+
+    #addBtn:hover {
+      color: red;
+    }
+
+    .section-title {
+      margin-bottom: 48px;
+      position: relative;
+      padding-top: 18px;
+    }
+
+    .section-title:after {
+      position: absolute;
+      content: "";
+      width: 56px;
+      height: 5px;
+      left: 0;
+      top: 0;
+      background: white;
+      -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+      clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    }
+
+    .section-title h2,
+    .section-title h3 {
+      font-weight: 700;
+    }
+
+    .text-white h1,
+    .text-white h2,
+    .text-white h3,
+    .text-white h4,
+    .text-white h5,
+    .text-white h6,
+    .text-white p,
+    .text-white span,
+    .text-white li,
+    .text-white a {
+      color: #838383;
+    }
+
+    .text-white span {
+      color: white !important;
+    }
+
+    .rating i {
+      color: #fbb710;
+    }
+
+    .rating .is-fade {
+      color: #e0e3e4;
+    }
+
+    /* buttons */
+    /*------------------
+      Header section
+    ---------------------*/
+    .header-top {
+      background: #df2b2a;
+      overflow: hidden;
+      padding: 18px 0;
+    }
+
+    .header-social {
+      float: left;
+    }
+
+    .header-social a {
+      color: white;
+      margin-right: 35px;
+    }
+
+    .user-panel {
+      float: right;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .user-panel a {
+      color: white;
+    }
+
+    .header-bottom {
+      padding: 38px 0;
+      position: relative;
+    }
+
+    .site-logo {
+      display: inline-block;
+      font-family: "Dancing Script", cursive;
+      font-size: 15px;
+      font-weight: 500;
+      color: #474747;
+      padding: 25px 20px;
+    }
+
+    .nav-switch {
+      display: none;
+    }
+
+    .main-menu,
+    .footer-menu {
+      list-style: none;
+      float: right;
+      margin-right: 0px;
+    }
+
+    .main-menu li,
+    .footer-menu li {
+      display: inline;
+    }
+
+    .main-menu li a,
+    .footer-menu li a {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+      color: rgb(219, 29, 29);
+      padding: 25px 20px;
+    }
+
+    .main-menu li a:hover {
+      color: #111010;
+    }
+
+    .footer-menu li a:hover {
+      color: black;
+    }
+
+    .header-search {
+      float: right;
+      margin-top: 15px;
+    }
+
+    .header-search a {
+      height: 37px;
+      width: 34px;
+      border: none;
+      background: white;
+      color: #838383;
+      border-radius: 4px;
+      display: inline-block;
+      text-align: center;
+      padding-top: 7px;
+    }
+
+    /*------------------
+      Hero Section
+    ---------------------*/
+
+    .hero-section {
+      clear: both;
+    }
+
+    .hero-slide-item {
+      height: 694px;
+      display: table;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .hs-text {
+      vertical-align: middle;
+      display: table-cell;
+      text-align: center;
+    }
+
+    .hs-title-1,
+    .hs-title-2,
+    .hs-title-3 {
+      font-weight: 700;
+      color: #838383;
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .hs-title-1 span,
+    .hs-title-2 span,
+    .hs-title-3 span {
+      display: inline-block;
+      border-radius: 5px;
+      position: relative;
+      -webkit-box-shadow: -1px -5px 20px 0px rgba(0, 0, 0, 0.3);
+      box-shadow: -1px -5px 20px 0px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+    }
+
+    .hs-title-1 {
+      font-size: 72px;
+      z-index: 3;
+    }
+
+    .hs-title-1 span {
+      padding: 0 28px;
+      background: white;
+      -webkit-transform: rotate(4deg);
+      -ms-transform: rotate(4deg);
+      transform: rotate(4deg);
+    }
+
+    .hs-title-2 {
+      font-size: 48px;
+      z-index: 4;
+    }
+
+    .hs-title-2 span {
+      padding: 5px 28px;
+      background: #fdc856;
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+      left: 0;
+      top: 0;
+    }
+
+    .hs-title-3 {
+      font-size: 36px;
+      z-index: 5;
+    }
+
+    .hs-title-3 span {
+      padding: 10px 28px;
+      background: #bdde64;
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+      top: 0;
+    }
+
+    /*------------------
+      Footer Section
+    ---------------------*/
+    .footer {
+      background: #000;
+      text-align: center;
+    }
+
+    .footer .share {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .footer .credit {
+      padding: 1.5rem 1rem;
+      color: #fff;
+      font-weight: normal;
+      font-size: 2rem;
+    }
+
+    .footer .credit span {
+      color: var(--red);
+    }
+
+    .page-top-section {
+      text-align: center;
+    }
+
+    .page-top-section h2 {
+      font-size: 52px;
+      display: inline-block;
+      font-weight: 700;
+      color: white;
+      padding: 1px 1px;
+      margin: 66px 0;
+      border-radius: 4px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 0rem 9%;
+      box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bolder;
+      color: red;
+    }
+
+
+
+    header .navbar a {
+      font-size: 1.5rem;
+      margin-left: 2rem;
+      color: #666;
+    }
+
+    header .navbar a:hover {
+      color: var(--red);
+    }
+
+    #menu-bar {
+      font-size: 3rem;
+      cursor: pointer;
+      color: #666;
+      border: .3rem solid #666;
+      border-radius: .3rem;
+      padding: .5rem 1.5rem;
+      display: none;
+    }
+  </style>
+  <title>Add Recipe</title>
+</head>
+
+<body>
+  <!-- header section starts  -->
+  <!-- section root element -->
+  <header>
+
+    <a href="/index.html" class="logo"></i>Ask Recipe </a>
+    <div class="image">
+      <img src="images/icons8-food-48.png" alt="">
+    </div>
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <!-- nav The nav element represents a section of a page that links to other pages or to parts within the page: a section with navigation links. -->
+    <nav class="navbar">
+      <a href="/index.html">Home</a>
+      <a href="/contact us.html" target="__main">Contact Us</a>
+      <a href="about us.html" target="__main">About Us</a>
+    </nav>
+
+  </header>
+
+  <section class="page-top-section set-bg card">
+    <img src="./assets/page-top-bg.jpg" alt="" />
+    <div class="container">
+      <h2 class="card-img-overlay">
+        Add Recipe
+      </h2>
+    </div>
+  </section>
+  <!-- Hero section end -->
+  <!-- ADD FORM -->
+  <form class=" pt-5 my-5 mx-5  p-4 bg-dark text-light" method="POST" action="/add" id="form" style="font-size:19px;"
+    enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Title</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="title" required />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Brief Description:</label>
+      <textarea type="" class="form-control" id="exampleInputPassword1" placeholder="" name="description"
+        required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Categorize your recipe:</label>
+      <div class="row">
+        <div class="col-4">
+          <label for="exampleFormControlSelect1">Recipe Type:</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" name="recipetype" required />
+        </div>
+        <div class="col-4">
+          <label for="exampleFormControlSelect1"> Cuisine:</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" name="cuisine" required />
+        </div>
+        <div class="col-4">
+          <label for="exampleFormControlSelect1"> Skill Level:</label>
+          <select class="form-control" id="exampleFormControlSelect1" name="difficulty">
+            <option>Begginers</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1"># of serving</label>
+      <input type="number" class="form-control" id="exampleInputEmail1" name="serving" required />
+    </div>
+    Ingredients
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col" style="color:white">
+            Quantity
+          </th>
+
+          <th scope="col" style="color:white">Item</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        <tr>
+          <th scope="row"></th>
+          <td>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="quantity" />
+          </td>
+          <td>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="item" />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <td>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="quantity" />
+          </td>
+
+          <td>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="item" required />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row"></th>
+          <td>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="quantity" />
+          </td>
+
+          <td>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="item" required />
+          </td>
+        </tr>
+      </tbody>
+      <button class="btn btn-light btn-sm mx-2" type="button" id="addrow"><i class="fa fa-plus"></i></button>
+    </table>
+    <label for="exampleInputEmail1">Time Taken</label>
+    <div class="row">
+      <div class="col-4">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Total Time </label>
+              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="hours" name="totaltime"
+                required />
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Cooking Time </label>
+              <input type="number" class="form-control" id="exampleInputEmail1" placeholder="hours" name="cookingtime"
+                required />
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Preparation Time </label>
+              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="hours" name="preptime"
+                required />
+            </div>
+          </div>
+          <div class="col"></div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Instructions </label>
+      <textarea type="" class="form-control" rows="8" id="exampleInputPassword1" placeholder="" name="instructionsteps"
+        required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlFile1">Upload Pictures</label>
+      <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" required />
+    </div>
+
+    <input type="submit" class="btn btn-danger btn-block text-center" value="Add a Recipe" />
+  </form>
+  <!-- ADD FORM END -->
+  <!-- footer section  -->
+  <section class="footer">
+    <h1 class="credit"> created by <span> XYZ</span> | all rights reserved! </h1>
+  </section>
+</body>
+
+</html>

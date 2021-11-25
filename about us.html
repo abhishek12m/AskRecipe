@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About us</title>
+  <link rel="icon" type="image/x-icon" href="/images/icons8-food-48.png">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    .column {
+      float: left;
+      width: 33.3%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(14, 13, 13, 0.2);
+      margin: 8px;
+    }
+
+    .about-section {
+      padding: 50px;
+      text-align: center;
+      background-color: #5d4a47;
+      color: rgb(255, 255, 255);
+    }
+
+    .container {
+      padding: 0 16px;
+    }
+
+    .container::after,
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .title {
+      color: grey;
+    }
+
+    .button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: rgb(201, 48, 48);
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .button:hover {
+      background-color: #555;
+    }
+
+    @media screen and (max-width: 650px) {
+      .column {
+        width: 100%;
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="about-section">
+    <h1>About Us</h1>
+    <p>Some text about who we are and what we do.</p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio ea quo excepturi facere, reiciendis blanditiis aut
+      earum! Quas adipisci velit in nulla laborum a. Deleniti nobis fuga id repellendus eius?</p>
+  </div>
+
+  <h2 style="text-align:center">Our chefs</h2>
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <img src="/images/Sanjeev-Kapoor.jpg" alt="Sanjeev" style="width:90%">
+        <div class="container">
+          <h2>Sanjeev Kapoor</h2>
+          <p class="title">chefs</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>sanjev@example.com</p>
+          <p><button class="button">Contact</button></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <img src="/images/Vikas-Khanna.jpg" alt="Vikas" style="width:90%">
+        <div class="container">
+          <h2>Vikas Khanna</h2>
+          <p class="title">chefs</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>vikas@example.com</p>
+          <p><button class="button">Contact</button></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <img src="/images/Ranveer-Brar.jpg" alt="Ranveer" style="width:90%">
+        <div class="container">
+          <h2>Ranveer Brar</h2>
+          <p class="title">chefs</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>ranveer@example.com</p>
+          <p><button class="button">Contact</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
